@@ -22,7 +22,9 @@ package org.kse.gui.preferences.data;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JTabbedPane;
 
@@ -42,6 +44,7 @@ public class KsePreferences {
     private DigestType certificateFingerprintAlgorithm = DigestType.SHA1;
     private PublicKeyFingerprintAlgorithm publicKeyFingerprintAlgorithm = PublicKeyFingerprintAlgorithm.SKI_METHOD1;
     private PasswordQualityConfig passwordQualityConfig = new PasswordQualityConfig(false, false, 60);
+    private PasswordGeneratorSettings passwordGeneratorSettings = new PasswordGeneratorSettings();
     private ProxySettings proxySettings = new ProxySettings();
     private Rectangle mainWindowSizeAndPosition = new Rectangle(0, 0, KseFrame.DEFAULT_WIDTH, KseFrame.DEFAULT_HEIGHT);
     private boolean showToolBar = true;
@@ -65,6 +68,9 @@ public class KsePreferences {
     private boolean nativeFileChooserEnabled = false;
     private Pkcs12EncryptionSetting pkcs12EncryptionSetting = Pkcs12EncryptionSetting.strong;
     private int serialNumberLengthInBytes = 20;
+    private Map<String, String> properties = new HashMap<>() {{
+        put("sun.java2d.noddraw", "true");
+    }};
 
     // auto-generated getters/setters
 
@@ -284,11 +290,27 @@ public class KsePreferences {
         this.nativeFileChooserEnabled = nativeFileChooserEnabled;
     }
 
-	public PublicKeyFingerprintAlgorithm getPublicKeyFingerprintAlgorithm() {
-		return publicKeyFingerprintAlgorithm;
-	}
+    public PublicKeyFingerprintAlgorithm getPublicKeyFingerprintAlgorithm() {
+        return publicKeyFingerprintAlgorithm;
+    }
 
-	public void setPublicKeyFingerprintAlgorithm(PublicKeyFingerprintAlgorithm publicKeyFingerprintAlgorithm) {
-		this.publicKeyFingerprintAlgorithm = publicKeyFingerprintAlgorithm;
-	}   
+    public void setPublicKeyFingerprintAlgorithm(PublicKeyFingerprintAlgorithm publicKeyFingerprintAlgorithm) {
+        this.publicKeyFingerprintAlgorithm = publicKeyFingerprintAlgorithm;
+    }
+
+    public PasswordGeneratorSettings getPasswordGeneratorSettings() {
+        return passwordGeneratorSettings;
+    }
+
+    public void setPasswordGeneratorSettings(PasswordGeneratorSettings passwordGeneratorSettings) {
+        this.passwordGeneratorSettings = passwordGeneratorSettings;
+    }
+
+    public Map<String, String> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Map<String, String> properties) {
+        this.properties = properties;
+    }
 }

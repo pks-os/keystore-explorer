@@ -20,7 +20,8 @@
 package org.kse.gui.passwordmanager;
 
 public enum EncryptionAlgorithm {
-    AES_CBC("AES/CBC/PKCS5Padding");
+    AES_CBC("AES/CBC/PKCS5Padding"),
+    AES_GCM("AES/GCM/NoPadding");
 
     private final String jceName;
 
